@@ -130,9 +130,6 @@ class HeroInterpreter:
         return self.hero_model
  
  
-"""
-改造为对象
-"""
 if __name__ == '__main__':
     hero_name = 'doomfist'
     hero = HeroInterpreter(hero_name)

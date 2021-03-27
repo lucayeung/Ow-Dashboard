@@ -1,0 +1,11 @@
+.idea/
+
+dashboard/.vscode/
+dashboard/dist/bundle.js
+node_modules/
+
+dataset/__pycache__
+dataset/bin/
+dataset/include
+dataset/lib
+pyvenv.cfg
