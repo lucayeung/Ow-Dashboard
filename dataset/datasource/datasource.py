@@ -53,11 +53,19 @@ class Datasource:
 
     def get_player_info(self):
         """玩家基本信息"""
+        # player_info = {
+        #     'name': self.player['displayName'],
+        #     'level': self.player['level'],
+        #     'gameWon': self.player['gameWon'],
+        #     'masthead': self.player['masthead']
+        # }
+        player_info = list()
+        player_info.append({ 'title': '玩家名称', 'value': self.player['displayName'] })
+        player_info.append({ 'title': '玩家等级', 'value': self.player['level'] })
+        player_info.append({ 'title': '“天命”英雄', 'value': self.player['masthead'].title() })
+        player_info.append({ 'title': '快速游戏总胜场', 'value': self.player['gameWon'] })
         return {
-            'name': self.player['displayName'],
-            'level': self.player['level'],
-            'gameWon': self.player['gameWon'],
-            'masthead': self.player['masthead']
+            'playerInfo': player_info
         }
 
 
