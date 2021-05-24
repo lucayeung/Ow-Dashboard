@@ -9,7 +9,7 @@ export default {
         path: '/kanban',
         name: '看板',
         icon: <SmileOutlined />,
-        component: './Welcome',
+        component: './Kanban',
       },
       {
         path: '/about',
@@ -18,8 +18,5 @@ export default {
         component: './About',
       }
     ],
-  },
-  location: {
-    pathname: '/',
-  },
+  }
 };

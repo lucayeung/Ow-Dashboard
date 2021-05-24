@@ -3,7 +3,7 @@ import React from "react";
 function Kanban() {
     return (
         <div>
-            Kanban
+            Kanban Page
         </div>
     )
 }
