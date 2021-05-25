@@ -63,7 +63,6 @@ class Datasource:
 
 
     def get_player_info(self):
-        """玩家基本信息"""
         result = list()
         player_info_table = [
             {'title': '玩家名称', 'key': 'displayName'},
@@ -123,7 +122,6 @@ class Datasource:
 
 
     def get_heroes_victory(self):
-        """玩家比赛胜利前8的英雄的胜场"""
         series_data = []
         for hero in self.get_heroes_list():
             display_name = hero['displayName']

@@ -1,12 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-import functools
 
 HEROES_URL = 'https://ow.blizzard.cn/heroes'
 
 def get_all_heroes():
-    """获取所有英雄的简介"""
     result = list()
     response = requests.get(HEROES_URL)
     status = response.status_code
