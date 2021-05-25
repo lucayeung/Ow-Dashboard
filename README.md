@@ -1,15 +1,35 @@
-# Ow Dashboard
+<div align="center">
+  <h1>
+    📊 📈 📉
+    <br>
+    Ow Dashboard
+  </h1>
+
+![](https://badgen.net/github/last-commit/lucayeung/Ow-Dashboard)
+![](https://badgen.net/github/commits/lucayeung/Ow-Dashboard)
+![](https://badgen.net/github/license/lucayeung/Ow-Dashboard)
+![](https://badgen.net/github/dependents-repo/lucayeung/Ow-Dashboard)
+
+</div>
+
+守望先锋生涯数据可视化看板
+
+<details>
+  <summary>Table of contents</summary>
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+TODO
+
+<!-- /code_chunk_output -->
+
+</details>
+
+# Get Started
 
 开发中...
 
-dashboard-spa模块
-- 指标板
-    1. 玩家名称
-    2. 玩家等级
-    3. 赞赏等级
-    4. 快速游戏总胜场
-- 第一模块
-    1. 折线图line ？？？
-    2. 直方图bar Top8英雄每个英雄游戏时间的比率 
-    3. 饼图pie Top8英雄比赛胜利场次
-    4. 组合直方图 Top5英雄比赛胜利和武器命中率的关系
+# Preview
+
+![](./preview/test-preview.png)
