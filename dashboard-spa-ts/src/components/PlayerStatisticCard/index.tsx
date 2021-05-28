@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {StatisticCard} from '@ant-design/pro-card';
 import RcResizeObserver from 'rc-resize-observer';
 import '@ant-design/pro-card/dist/card.css';
+import {RocketTwoTone, ProjectTwoTone} from '@ant-design/icons'
 
 const imgStyle = {
     display: 'block',
@@ -11,6 +12,7 @@ const imgStyle = {
 
 interface Props {
     playerName: string;
+    portraitAvatar: string;
     playerLevel: number;
     bountyLevel: number;
     totalWins: number;
@@ -18,11 +20,16 @@ interface Props {
 
 export default ({
     playerName,
+    portraitAvatar,
     playerLevel,
     bountyLevel,
     totalWins
 }: Props) => {
     const [responsive, setResponsive] = useState(false);
+
+    const portraitAvatarMemo = useMemo(() => {
+        return `https://overwatch.nosdn.127.net/images/${portraitAvatar}`;
+    }, [portraitAvatar]);
 
     return (
         <RcResizeObserver
@@ -39,8 +46,8 @@ export default ({
                         icon: (
                             <img
                                 style={imgStyle}
-                                src="https://gw.alipayobjects.com/mdn/rms_7bc6d8/afts/img/A*dr_0RKvVzVwAAAAAAAAAAABkARQnAQ"
-                                alt="icon"
+                                src={portraitAvatarMemo}
+                                alt="avatar"
                             />
                         ),
                     }}
@@ -50,11 +57,7 @@ export default ({
                         title: '玩家等级',
                         value: playerLevel,
                         icon: (
-                            <img
-                                style={imgStyle}
-                                src="https://gw.alipayobjects.com/mdn/rms_7bc6d8/afts/img/A*-jVKQJgA1UgAAAAAAAAAAABkARQnAQ"
-                                alt="icon"
-                            />
+                            <RocketTwoTone style={{ fontSize: 38 }} />
                         ),
                     }}
                 />
@@ -76,11 +79,7 @@ export default ({
                         title: '总胜场',
                         value: totalWins,
                         icon: (
-                            <img
-                                style={imgStyle}
-                                src="https://gw.alipayobjects.com/mdn/rms_7bc6d8/afts/img/A*pUkAQpefcx8AAAAAAAAAAABkARQnAQ"
-                                alt="icon"
-                            />
+                            <ProjectTwoTone style={{ fontSize: 38 }} />
                         ),
                     }}
                 />

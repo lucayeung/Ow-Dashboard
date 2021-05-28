@@ -45,10 +45,10 @@ def get_hero_list():
     return jsonify({'isSuccess': True, 'data': hero_list}), 200
 
 
-@app.route("/heroes_game_time")
-def get_heroes_game_time():
-    """每个英雄游戏时间的比率"""
-    heroes_game_time = ds.get_heroes_game_time()
+@app.route("/get_top5_heroes_game_time")
+def get_top5_heroes_game_time():
+    """游戏时间前5的英雄"""
+    heroes_game_time = ds.get_top5_heroes_game_time()
     return jsonify({'isSuccess': True, 'data': heroes_game_time}), 200
 
 

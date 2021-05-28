@@ -980,37 +980,97 @@ function chinaMap() {
 function getRadarOption() {
     return {
         title: {
-            // text: '基础雷达图'
+            text: '常用英雄数据'
         },
+        tooltip: {},
         legend: {
-            data: ['消灭', '命中 🎯'],
             orient: "vertical",
-            left: 'auto'
+            right: 'right'
         },
         radar: {
-            // shape: 'circle',
             indicator: [
-                {name: '销售', max: 6500},
-                {name: '管理', max: 16000},
-                {name: '信息技术', max: 30000},
-                {name: '客服', max: 38000},
-                {name: '研发', max: 52000},
-                {name: '市场', max: 25000}
+                {name: '消灭', max: 48},
+                {name: '单独消灭', max: 30},
+                {name: '瞬间消灭', max: 4},
+                {name: '连续消灭', max: 28},
+                {name: '最后一击', max: 38}
             ]
         },
         series: [{
-            name: '预算 vs 开销（Budget vs spending）',
+            name: '预算 vs 开销',
             type: 'radar',
             data: [
                 {
-                    value: [4200, 3000, 20000, 35000, 50000, 18000],
-                    name: '消灭'
+                    value: [40, 12, 3, 17, 30],
+                    name: '路霸'
                 },
                 {
-                    value: [5000, 14000, 28000, 26000, 42000, 21000],
-                    name: '命中 🎯'
+                    value: [46, 17, 4, 20, 35],
+                    name: '狂鼠'
                 }
             ]
+        }]
+    }
+}
+
+// 2 英雄游戏时间
+function getHeroGameTimePie() {
+    return {
+        title: {
+            text: '游戏时间前5的英雄'
+        },
+        formatter: function (data: any) {
+            return `${data.marker} ${data.name} ${data.value}小时`
+        },
+        tooltip: {},
+        series: [{
+            type: "pie",
+            data: [{
+                value: 335,
+                name: "路霸"
+            }, {
+                value: 310,
+                name: "末日铁拳"
+            }, {
+                value: 234,
+                name: "源氏"
+            }, {
+                value: 135,
+                name: "法老之鹰"
+            }, {
+                value: 548,
+                name: "黑影"
+            }]
+        }]
+    }
+}
+
+function getHeroWinsBar() {
+    return {
+        title: {
+            text: '英雄胜场'
+        },
+        tooltip: {},
+        legend: {
+            orient: "vertical",
+            right: 'right'
+        },
+        xAxis: {
+            data: ["路霸", "末日铁拳", "源氏", "法老之鹰", "黑影", "狂鼠", "美", "查莉娅"],
+            axisLabel: {
+                interval: 0,
+                rotate: 24
+            }
+        },
+        yAxis: {},
+        series: [{
+            name: "总场",
+            type: "bar",
+            data: [5, 20, 36, 10, 10, 20, 4, 2]
+        }, {
+            name: "胜场",
+            type: "bar",
+            data: [3, 14, 18, 8, 6, 13, 3, 2]
         }]
     }
 }
@@ -1027,5 +1087,7 @@ export {
     getCombineV2Option,
     scatter3dDataset,
     chinaMap,
-    getRadarOption
+    getRadarOption,
+    getHeroGameTimePie,
+    getHeroWinsBar,
 }

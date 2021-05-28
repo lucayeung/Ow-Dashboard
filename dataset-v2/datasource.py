@@ -63,28 +63,31 @@ class Datasource:
 
 
     def get_player_info(self):
-        result = list()
-        player_info_table = [
+        player_info = dict()
+        query_table = [
             {'title': '玩家名称', 'key': 'displayName'},
             {'title': '玩家等级', 'key': 'level'},
             {'title': '“天命”英雄', 'key': 'masthead'},
             {'title': '快速游戏总胜场', 'key': 'gameWon'},
+            {'title': '悬赏等级', 'key': 'endorsement'},
+            {'title': '头像', 'key': 'portraitAvatar'},
         ]
-        for item in player_info_table:
-            result.append({
+        for item in query_table:
+            key = item['key']
+            player_info[key] = {
                 'title': item['title'],
-                'value': self.player[item['key']],
-            })
+                'value': self.player[key],
+            }
         return {
-            'playerInfo': result
+            'playerInfo': player_info
         }
 
 
-    def get_heroes_game_time(self):
+    def get_top5_heroes_game_time(self):
         """柱状图
         参考：https://echarts.apache.org/zh/option.html#series-bar
         """
-        hero_game_time_data = []
+        hero_game_time_list = list()
         labels = []
         for hero in self.get_heroes_list():
             hero_name = hero['displayName']
@@ -100,22 +103,26 @@ class Datasource:
                         value = per_cps['value']
                     # 秒换算为小时
                     game_time_hours = round((value / 60) / 60)
-                    hero_game_time_data.append(game_time_hours)
+                    hero_game_time = {
+                        'value': game_time_hours,
+                        'name': hero_name
+                    }
+                    hero_game_time_list.append(hero_game_time)
+                    # 找到游戏时间即可
+                    break
+
+        # 排序
+        sorted_hero_game_time_list = sorted(hero_game_time_list, key=lambda x: x['value'], reverse=True)
 
         return {
-            'chartId': 'heroesGameTime',
-            'title': '每个英雄游戏时间的比率',
-            'tooltip': {},
-            'legend': {},
-            'xAxis': {
-                'data': labels
+            'title': {
+                'text': '游戏时间前5的英雄'
             },
-            'yAxis': {},
+            'tooltip': {},
             'series': [
                 {
-                    'type': 'bar',
-                    'name': '游戏时间（单位：小时）',
-                    'data': hero_game_time_data
+                    'type': 'pie',
+                    'data': sorted_hero_game_time_list[:5]
                 }
             ]
         }
